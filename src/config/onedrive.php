@@ -11,17 +11,17 @@ return [
     /**
      * client_id
      */
-    "onedrive_client_id" => "350fd1bd-0abb-4b05-af99-65c89798f2cd",
+    "onedrive_client_id" => "",
 
     /**
      * client_secret
      */
-    "onedrive_secret_id" => "qJLV4NBg2UhZvWYuFHn2Y0R",
+    "onedrive_secret_id" => "",
 
     /**
      * redirect_uri
      */
-    "onedrive_redirect_url" => "http://localhost:8085/index.php"
+    "onedrive_redirect_url" => ""
 ];
 
 
