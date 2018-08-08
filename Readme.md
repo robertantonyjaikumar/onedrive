@@ -12,63 +12,77 @@ It provides library is to integrate your php Application with Onedrive
 ````
 composer require "processdrive/onedrive-integration":"dev-master"
 ````
+
 **Configuration**
-````
+
 To Integrate your app with onedrive you need follow below steps:
 
 step 1: Create application in [onedrive portal](https://apps.dev.microsoft.com/#/appList)
+
 step 2: Generate new password
+
 step 3: Add redirect URL (Here auth_code will be sent to this url)
+
 step 3: Add Delegated permission (Files.ReadWrite.All and Directory.ReadWrite.All)
+
 step 4: Edit /vendor/onedrive/src/config/onedrive.php and add your creds. 
-````
+
 
 **How to Use ?**
-````
-use onedrive\models\onedrive_business; // for onedrive business
 
+use onedrive\models\onedrive_business; // for onedrive business
+````
 $onedrive = new onedrive_business;
 
 $onedrive->get_code_url() // It will give redirect uri
-
+````
 After authenticate:
+
 Onedrive will redirect(this from onedrive application configuration) to your php application
 
+
 For example:
+````
 http://localhost/index.php  // your redirect page
+
 http://localhost/index.php?code=** // response from onedrive
 
 $code // from onedrive
-$onedrive->get_access_token_from_code($code);
 
+$onedrive->get_access_token_from_code($code);
+````
 it will generate access_token and refresh_token
+````
 $onedrive->access_token // will give accesstoken
+
 $onedrive->refresh_token // will give refreshtoken
 
 $onedrive->get_access_token_from_refresh_token($refresh_token);
-
+````
 it will generate access_token and refresh_token
+````
 $onedrive->access_token // will give accesstoken
+
 $onedrive->refresh_token // will give refreshtoken
 ````
 
-**Get Items**
+Get Items
 ````
 $onedrive->get_items($parent_folder_id = null); 
 ````
-**Create Folder**
+Create Folder
 ````
 $onedrive->create_folder($folder_name, $parent_folder_id = null); 
 ````
-**Delete Folder or Item**
+Delete Folder or Item
 ````
 $onedrive->delete_item_from_drive($item_id);
 ````
-**Create File**
+Create File
 ````
 $onedrive->create_file($file_path, $parent_id = null, $file_name = null);
 ````
-**Download File**
+Download File
 ````
 $onedrive->download_file($file_id);
 ````
