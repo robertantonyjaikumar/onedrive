@@ -1,5 +1,5 @@
 {
-    "name": "onedriveIntegration/onedrive",
+    "name": "integration/onedrive",
     "description": "Onedrive Integration",
     "type": "library",
     "license": "MIT",
