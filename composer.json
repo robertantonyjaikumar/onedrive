@@ -1,0 +1,19 @@
+{
+    "name": "processdrive/onedrive",
+    "description": "Onedrive Integration",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jai",
+            "email": "jai@processdrive.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "onedrive\\": "src"
+        }
+    }
+}
