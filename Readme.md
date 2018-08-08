@@ -10,5 +10,5 @@ It provides library is to integrate your php Application with Onedrive
 
 **Installation**
 ````
-composer require processdrive/onedrive-integration
+composer require "processdrive/onedrive-integration":"dev-master"
 ````
