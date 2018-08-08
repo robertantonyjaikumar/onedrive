@@ -17,7 +17,7 @@ composer require "processdrive/onedrive-integration":"dev-master"
 
 To Integrate your app with onedrive you need follow below steps:
 
-step 1: Create application in [Onedrive application portal](https://apps.dev.microsoft.com/#/appList)
+step 1: Create application in [Onedrive Application Portal](https://apps.dev.microsoft.com/#/appList)
 
 step 2: Generate new password
 
