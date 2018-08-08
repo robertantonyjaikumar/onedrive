@@ -6,7 +6,7 @@
 
 **Onedrive Integration**
 
-It provides library is to integrate your php Application with Onedrive
+This library helps you to integrate your php Application with Onedrive
 
 **Installation**
 ````
