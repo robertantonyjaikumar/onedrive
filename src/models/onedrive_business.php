@@ -8,9 +8,15 @@
 
 namespace onedrive\models;
 
-
+/**
+ * Class onedrive_business
+ * @package onedrive\models
+ */
 class onedrive_business extends onedrive_abstract
 {
+    /**
+     * onedrive_business constructor.
+     */
     function __construct()
     {
         parent::__construct();
@@ -21,11 +27,18 @@ class onedrive_business extends onedrive_abstract
         $this->share_key = "/createLink";
     }
 
+    /**
+     * @return string
+     */
     public function get_code_url()
     {
         return $this->baseurl_onedrive_auth."authorize?".$this->onedrive_client_id."&response_type=code&".$this->onedrive_redirect_url;
     }
 
+    /**
+     * @param $code
+     * @return onedrive_abstract|token
+     */
     public function get_access_token_from_code($code)
     {
         $this->url = $this->baseurl_onedrive_auth."token";
@@ -34,6 +47,10 @@ class onedrive_business extends onedrive_abstract
         return parent::get_access_token_from_code($code);
     }
 
+    /**
+     * @param $refresh_token
+     * @return onedrive_abstract|token
+     */
     public function get_access_token_from_refresh_token($refresh_token)
     {
         $this->url = $this->baseurl_onedrive_auth."token";

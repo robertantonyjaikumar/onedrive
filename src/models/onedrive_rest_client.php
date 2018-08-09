@@ -8,9 +8,17 @@
 
 namespace onedrive\models;
 
-
+/**
+ * Class onedrive_rest_client
+ * @package onedrive\models
+ */
 class onedrive_rest_client
 {
+    /**
+     * @param $paremeter
+     * @param bool $json_decode
+     * @return mixed
+     */
     public function consume($paremeter, $json_decode = true)
     {
         $curl = curl_init();

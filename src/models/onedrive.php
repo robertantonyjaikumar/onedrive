@@ -8,6 +8,10 @@
 
 namespace onedrive\models;
 
+/**
+ * Interface onedrive
+ * @package onedrive\models
+ */
 interface onedrive {
 
     /**
@@ -59,4 +63,10 @@ interface onedrive {
      * @return mixed
      */
     function delete_item_from_drive($item_id);
+
+    /**
+     * @param $item_id
+     * @return string [url]
+     */
+    function get_share_link_of_an_item($item_id);
 }

@@ -8,7 +8,10 @@
 
 namespace onedrive\models;
 
-
+/**
+ * Class onedrive_abstract
+ * @package onedrive\models
+ */
 abstract class onedrive_abstract implements onedrive
 {
     protected $baseurl_onedrive_auth;
@@ -144,6 +147,10 @@ abstract class onedrive_abstract implements onedrive
         }
     }
 
+    /**
+     * @param $item_id
+     * @return string [""]
+     */
     public function delete_item_from_drive($item_id)
     {
         $this->url = $this->baseurl_onedrive_action."items/".$item_id;
@@ -151,6 +158,23 @@ abstract class onedrive_abstract implements onedrive
         $this->header = ["authorization : bearer ".$this->access_token];
 
         return $this->onedrive_rest_client->consume($this->construct_service_data(), false);
+    }
+
+    /**
+     * @param $item_id
+     * @return string
+     */
+    public function get_share_link_of_an_item($item_id)
+    {
+        $this->url = $this->baseurl_onedrive_action."items/".$item_id.$this->share_key;
+        $this->method = "POST";
+        $this->parameter = "{\n  \"type\": \"edit\",\n\t\"scope\": \"anonymous\"\n}\n";
+        $this->header = [
+            "authorization : bearer ".$this->access_token,
+            "content-type: application/json"
+        ];
+
+        return $this->onedrive_rest_client->consume($this->construct_service_data())->link->webUrl;
     }
 
     /**
@@ -197,6 +221,14 @@ abstract class onedrive_abstract implements onedrive
         return $this;
     }
 
+    /**
+     * @param $parts
+     * @param $handle
+     * @param $chunkSizeBytes
+     * @param $parent_id
+     * @param $file_name
+     * @return mixed
+     */
     protected function upload_load_file_less_than_four_mb_or_onedrive_personal($parts, $handle, $chunkSizeBytes, $parent_id, $file_name) {
         for ($i=0;$i < $parts;$i++)
         {
@@ -218,7 +250,17 @@ abstract class onedrive_abstract implements onedrive
         return $this->onedrive_rest_client->consume($this->construct_service_data());
     }
 
-    protected function upload_file_is_greator_than_four_mb($parts, $handle, $chunkSizeBytes, $parent_id, $file_name, $file_size) {
+    /**
+     * @param $parts
+     * @param $handle
+     * @param $chunkSizeBytes
+     * @param $parent_id
+     * @param $file_name
+     * @param $file_size
+     * @return mixed
+     */
+    protected function upload_file_is_greator_than_four_mb($parts, $handle, $chunkSizeBytes, $parent_id, $file_name, $file_size) 
+    {
         $contentLen = $chunkSizeBytes -1;
         $this->url = $this->baseurl_onedrive_action ."/items/".$parent_id.":/".$file_name.":/createUploadSession";
         $this->method = "POST";
@@ -263,7 +305,15 @@ abstract class onedrive_abstract implements onedrive
         fclose($handle);
     }
 
-    protected function file_put_helper ($upload_url, $finalChunkByte, $contentrange, $data) {
+    /**
+     * @param $upload_url
+     * @param $finalChunkByte
+     * @param $contentrange
+     * @param $data
+     * @return mixed
+     */
+    protected function file_put_helper ($upload_url, $finalChunkByte, $contentrange, $data) 
+    {
         $this->method = "PUT";
         $this->url = $upload_url;
         $this->header = [
