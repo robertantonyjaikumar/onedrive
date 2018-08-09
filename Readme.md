@@ -30,9 +30,9 @@ step 4: Edit /vendor/onedrive/src/config/onedrive.php and add your creds.
 
 **How to Use ?**
 
-use onedrive\models\onedrive_business; // for onedrive business
+use onedrive\models\onedrive_business; // for onedrive business and you can use onedrive_personal for personal accounts
 ````
-$onedrive = new onedrive_business;
+$onedrive = new onedrive_business();
 
 $onedrive->get_code_url() // It will give redirect uri
 ````
