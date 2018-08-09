@@ -66,27 +66,27 @@ $onedrive->access_token // will give accesstoken
 $onedrive->refresh_token // will give refreshtoken
 ````
 
-Get Items
+**Get Items**
 ````
 $onedrive->get_items($parent_folder_id = null); 
 ````
-Create Folder
+**Create Folder**
 ````
 $onedrive->create_folder($folder_name, $parent_folder_id = null); 
 ````
-Delete Folder or File
+**Delete Folder or File**
 ````
 $onedrive->delete_item_from_drive($item_id);
 ````
-Create File
+**Create File**
 ````
 $onedrive->create_file($file_path, $parent_id = null, $file_name = null);
 ````
-Download File
+**Download File**
 ````
 $onedrive->download_file($file_id);
 ````
-Get Share link of Folder or File
+**Get Share link of Folder or File**
 ````
 $onedrive->get_share_link_of_an_item($file_id);
 ````
