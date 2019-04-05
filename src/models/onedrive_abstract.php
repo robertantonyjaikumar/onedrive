@@ -106,11 +106,24 @@ abstract class onedrive_abstract implements onedrive
      */
     public function download_file($file_id)
     {
-        $this->url = $this->baseurl_onedrive_action."items/".$file_id."/content";
+        $this->url = $this->baseurl_onedrive_action."items/".$file_id;
         $this->header = ["Authorization : Bearer ".$this->access_token];
         $this->method = "GET";
         $this->parameter = "";
+        $downurl = false;
+        try {
+            foreach ($this->onedrive_rest_client->consume($this->construct_service_data(), true) as $k => $value) {
+                if ($k == $this->key)
+                    $downurl = $value;
+            }
 
+        } catch (\Exception $ex) {
+            return false;
+        }
+
+        if (! $downurl) return false;
+        $this->header = "";
+        $this->url = $downurl;
         return $this->onedrive_rest_client->consume($this->construct_service_data(), false);
     }
 

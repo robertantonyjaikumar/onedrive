@@ -28,10 +28,8 @@ class onedrive_rest_client
         curl_close($curl);
 
         if ($json_decode)
-        $response = json_decode($response);
-        else {
-            var_dump($response);die;
-        }
+            $response = json_decode($response);
+
 
         if ($err) {
             echo "cURL Error #:" . $err;die;
